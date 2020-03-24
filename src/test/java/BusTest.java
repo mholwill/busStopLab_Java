@@ -6,11 +6,15 @@ import static org.junit.Assert.assertEquals;
 public class BusTest {
     private Bus bus;
     private Person person;
+    private BusStop busStop;
 
     @Before
     public void before() {
         bus = new Bus("Leith", 1);
+        busStop = new BusStop("Waverley");
         person = new Person();
+        busStop.addPerson(person);
+        busStop.addPerson(person);
     }
 
     @Test
@@ -20,20 +24,20 @@ public class BusTest {
 
     @Test
     public void canAddPassengerIfNotfull() {
-        bus.addPassenger(person);
+        bus.pickUpPassenger(busStop);
         assertEquals(1, bus.getNumberOfPassengers());
     }
 
     @Test
     public void cantAddPassengerIfFull() {
-        bus.addPassenger(person);
-        bus.addPassenger(person);
+        bus.pickUpPassenger(busStop);
+        bus.pickUpPassenger(busStop);
         assertEquals(1, bus.getNumberOfPassengers());
     }
 
     @Test
     public void canRemovePassenger(){
-        bus.addPassenger(person);
+        bus.pickUpPassenger(busStop);
         bus.removePassenger();
         assertEquals(0, bus.getNumberOfPassengers());
     }
