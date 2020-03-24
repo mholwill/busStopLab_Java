@@ -9,7 +9,7 @@ public class BusTest {
 
     @Before
     public void before() {
-        bus = new Bus("Leith", 10);
+        bus = new Bus("Leith", 1);
         person = new Person();
     }
 
@@ -22,5 +22,19 @@ public class BusTest {
     public void canAddPassengerIfNotfull() {
         bus.addPassenger(person);
         assertEquals(1, bus.getNumberOfPassengers());
+    }
+
+    @Test
+    public void cantAddPassengerIfFull() {
+        bus.addPassenger(person);
+        bus.addPassenger(person);
+        assertEquals(1, bus.getNumberOfPassengers());
+    }
+
+    @Test
+    public void canRemovePassenger(){
+        bus.addPassenger(person);
+        bus.removePassenger();
+        assertEquals(0, bus.getNumberOfPassengers());
     }
 }
