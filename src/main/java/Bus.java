@@ -14,4 +14,7 @@ public class Bus {
     }
 
 
+    public int getNumberOfPassengers() {
+        return this.passengers.size();
+    }
 }
