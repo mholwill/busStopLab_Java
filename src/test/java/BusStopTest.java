@@ -31,5 +31,4 @@ public class BusStopTest {
         Person passenger = busStop.removePerson();
         assertEquals(person, passenger);
         }
-
 }
